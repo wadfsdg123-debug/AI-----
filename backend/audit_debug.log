@@ -1,0 +1,13 @@
+2026-02-07 12:35:05,895 - main_fixed - INFO - ✓ 已清理旧日志文件
+2026-02-07 12:35:05,895 - main_fixed - INFO - 服务已启动，等待请求...
+2026-02-07 12:35:06,062 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, 'C:\\Users\\石禾琳\\cyber-audit-project\\backend\\audit_debug.log')}
+2026-02-07 12:35:07,419 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:10,428 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:13,437 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:16,445 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:19,471 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:22,477 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:25,484 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:28,493 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:31,503 - main_fixed - WARNING - 请求不存在的任务: 1d914e22
+2026-02-07 12:35:34,533 - main_fixed - WARNING - 请求不存在的任务: 1d914e22

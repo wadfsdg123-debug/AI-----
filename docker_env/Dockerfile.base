@@ -1,0 +1,30 @@
+# 使用轻量级 Python 基础镜像
+FROM python:3.10-slim
+
+# 设置工作目录
+WORKDIR /app
+
+# 安装系统依赖（合并 RUN 减少镜像层数）
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    default-jdk \
+    php \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# 安装 Python 安全审计工具
+RUN pip install --no-cache-dir bandit semgrep
+
+# 验证安装（构建时检查）
+RUN python --version && \
+    bandit --version && \
+    semgrep --version && \
+    java -version 2>&1 | head -n 1 && \
+    php --version | head -n 1 && \
+    node --version
+
+# 默认命令
+CMD ["bash"]

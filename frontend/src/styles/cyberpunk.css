@@ -1,0 +1,458 @@
+/* ============================================
+   赛博朋克主题 - Cyberpunk Theme
+   ============================================ */
+
+/* CSS 变量定义 */
+:root {
+  /* 主色调 - 霓虹青绿色 */
+  --primary: #00ff9f;
+  --primary-dark: #00cc7f;
+  --primary-glow: rgba(0, 255, 159, 0.5);
+  
+  /* 危险/错误 - 霓虹粉红 */
+  --danger: #ff0055;
+  --danger-glow: rgba(255, 0, 85, 0.5);
+  
+  /* 警告 - 霓虹橙黄 */
+  --warning: #ffaa00;
+  --warning-glow: rgba(255, 170, 0, 0.5);
+  
+  /* 信息 - 霓虹蓝 */
+  --info: #00ccff;
+  --info-glow: rgba(0, 204, 255, 0.5);
+  
+  /* 背景色 */
+  --bg-dark: #0a0e27;
+  --bg-darker: #050817;
+  --bg-card: #1a1d35;
+  --bg-card-hover: #252a4a;
+  
+  /* 文字颜色 */
+  --text: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #606080;
+  
+  /* 边框 */
+  --border-color: #2a2d4a;
+  --border-glow: rgba(0, 255, 159, 0.3);
+  
+  /* 字体 */
+  --font-mono: 'Courier New', 'Consolas', 'Monaco', monospace;
+  --font-display: 'Orbitron', 'Courier New', sans-serif;
+}
+
+/* ============================================
+   基础样式
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  background-image: 
+    linear-gradient(rgba(0, 255, 159, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 159, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* ============================================
+   霓虹效果
+   ============================================ */
+
+/* 霓虹边框 */
+.neon-border {
+  border: 1px solid var(--primary);
+  box-shadow: 
+    0 0 5px var(--primary-glow),
+    0 0 10px var(--primary-glow),
+    inset 0 0 5px var(--primary-glow);
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.neon-border-danger {
+  border-color: var(--danger);
+  box-shadow: 
+    0 0 5px var(--danger-glow),
+    0 0 10px var(--danger-glow),
+    inset 0 0 5px var(--danger-glow);
+  animation: neon-pulse-danger 2s ease-in-out infinite;
+}
+
+.neon-border-warning {
+  border-color: var(--warning);
+  box-shadow: 
+    0 0 5px var(--warning-glow),
+    0 0 10px var(--warning-glow),
+    inset 0 0 5px var(--warning-glow);
+  animation: neon-pulse-warning 2s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 5px var(--primary-glow),
+      0 0 10px var(--primary-glow),
+      inset 0 0 5px var(--primary-glow);
+  }
+  50% { 
+    box-shadow: 
+      0 0 2px var(--primary-glow),
+      0 0 5px var(--primary-glow),
+      inset 0 0 2px var(--primary-glow);
+  }
+}
+
+@keyframes neon-pulse-danger {
+  0%, 100% { 
+    box-shadow: 
+      0 0 5px var(--danger-glow),
+      0 0 10px var(--danger-glow),
+      inset 0 0 5px var(--danger-glow);
+  }
+  50% { 
+    box-shadow: 
+      0 0 2px var(--danger-glow),
+      0 0 5px var(--danger-glow),
+      inset 0 0 2px var(--danger-glow);
+  }
+}
+
+@keyframes neon-pulse-warning {
+  0%, 100% { 
+    box-shadow: 
+      0 0 5px var(--warning-glow),
+      0 0 10px var(--warning-glow),
+      inset 0 0 5px var(--warning-glow);
+  }
+  50% { 
+    box-shadow: 
+      0 0 2px var(--warning-glow),
+      0 0 5px var(--warning-glow),
+      inset 0 0 2px var(--warning-glow);
+  }
+}
+
+/* ============================================
+   故障效果
+   ============================================ */
+
+.glitch {
+  position: relative;
+  color: var(--primary);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--danger);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--info);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(20px, 9999px, 15px, 0); }
+  20% { clip: rect(60px, 9999px, 70px, 0); }
+  40% { clip: rect(20px, 9999px, 50px, 0); }
+  60% { clip: rect(10px, 9999px, 80px, 0); }
+  80% { clip: rect(50px, 9999px, 20px, 0); }
+  100% { clip: rect(70px, 9999px, 90px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(60px, 9999px, 80px, 0); }
+  20% { clip: rect(10px, 9999px, 50px, 0); }
+  40% { clip: rect(80px, 9999px, 20px, 0); }
+  60% { clip: rect(30px, 9999px, 60px, 0); }
+  80% { clip: rect(70px, 9999px, 30px, 0); }
+  100% { clip: rect(20px, 9999px, 70px, 0); }
+}
+
+/* 简单故障效果 */
+.glitch-simple {
+  animation: glitch-simple 0.3s infinite;
+}
+
+@keyframes glitch-simple {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* ============================================
+   卡片样式
+   ============================================ */
+
+.cyber-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cyber-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  transition: left 0.5s;
+}
+
+.cyber-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+.cyber-card:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   按钮样式
+   ============================================ */
+
+.cyber-button {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  transition: left 0.3s;
+  z-index: -1;
+}
+
+.cyber-button:hover {
+  color: var(--bg-dark);
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.cyber-button:hover::before {
+  left: 0;
+}
+
+.cyber-button-danger {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.cyber-button-danger::before {
+  background: var(--danger);
+}
+
+.cyber-button-danger:hover {
+  box-shadow: 0 0 20px var(--danger-glow);
+}
+
+/* ============================================
+   输入框样式
+   ============================================ */
+
+.cyber-input {
+  background: var(--bg-darker);
+  border: 1px solid var(--border-color);
+  color: var(--text);
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  outline: none;
+  transition: all 0.3s;
+}
+
+.cyber-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* ============================================
+   标签样式
+   ============================================ */
+
+.cyber-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 255, 159, 0.1);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+
+.cyber-tag-danger {
+  background: rgba(255, 0, 85, 0.1);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.cyber-tag-warning {
+  background: rgba(255, 170, 0, 0.1);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+/* ============================================
+   进度条样式
+   ============================================ */
+
+.cyber-progress {
+  height: 20px;
+  background: var(--bg-darker);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--info));
+  position: relative;
+  transition: width 0.3s;
+}
+
+.cyber-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progress-shine 1.5s infinite;
+}
+
+@keyframes progress-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ============================================
+   扫描线效果
+   ============================================ */
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 255, 159, 0.02) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================
+   响应式布局
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 14px;
+  }
+  
+  .cyber-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  .glitch {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cyber-card {
+    margin: 10px;
+  }
+  
+  body {
+    background-size: 30px 30px;
+  }
+}
